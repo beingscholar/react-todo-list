@@ -8,12 +8,28 @@ class App extends Component {
   state = {
     id: uuid(),
     item: '',
-    items: [{ id: 1 }],
+    items: [],
     editItem: false,
   };
 
   handleChange = e => {
     this.setState({ item: e.target.value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { id, item, items } = this.state;
+    const newItem = { id, title: item };
+    const updatedItems = [...items, newItem];
+    this.setState(
+      {
+        id: uuid(),
+        item: '',
+        items: updatedItems,
+        editItem: false,
+      },
+      () => console.log(this.state)
+    );
   };
 
   handleDelete = id => {
@@ -22,11 +38,6 @@ class App extends Component {
 
   handleEdit = id => {
     console.log(`Handle Edit ${id}`);
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log(this.state.item);
   };
 
   clearList = e => {
