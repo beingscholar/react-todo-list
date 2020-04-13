@@ -13,7 +13,7 @@ class App extends Component {
   };
 
   handleChange = e => {
-    console.log('Handle Change');
+    this.setState({ item: e.target.value });
   };
 
   handleDelete = id => {
@@ -26,7 +26,7 @@ class App extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log('Handle Submit');
+    console.log(this.state.item);
   };
 
   clearList = e => {
